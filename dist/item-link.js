@@ -6,7 +6,7 @@ var visit = require('unist-util-visit');
 var toString = require('mdast-util-to-string');
 var states = require('datasets-us-states-abbr');
 
-var remoteRegex = /remote|distributed|anywhere/i;
+var remoteRegex = /remote|distributed|anywhere|online/i;
 
 function item(tree, file) {
   function visitor(node, index, parent) {
