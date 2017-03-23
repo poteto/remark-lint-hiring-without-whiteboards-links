@@ -1,6 +1,6 @@
 {
   "name": "remark-lint-hiring-without-whiteboards-links",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Checks that all resources links are formatted according to poteto/hiring-without-whiteboards guidelines",
   "author": "Lauren Tan <arr@sugarpirate.com> (http://www.sugarpirate.com)",
   "repository": {
