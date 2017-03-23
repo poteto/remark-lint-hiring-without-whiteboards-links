@@ -6,6 +6,8 @@ var visit = require('unist-util-visit');
 var toString = require('mdast-util-to-string');
 var states = require('datasets-us-states-abbr');
 
+var remoteRegex = /remote|distributed|anywhere/i;
+
 function item(tree, file) {
   function visitor(node, index, parent) {
     if (parent.ordered || generated(node)) {
@@ -33,6 +35,12 @@ function item(tree, file) {
       var state = parts[1] && states.includes(parts[1].toUpperCase());
       var min = 2;
       var max = state ? 3 : min;
+      var containsRemote = !!remoteRegex.exec(place);
+      var invalidRemote = place !== 'Remote';
+
+      if (containsRemote && invalidRemote) {
+        file.message('Invalid remote value `' + place + '`, please only use `Remote`', node);
+      }
 
       if (parts.length > max) {
         file.message('Invalid location `' + place + '`, please only include city and country name', node);

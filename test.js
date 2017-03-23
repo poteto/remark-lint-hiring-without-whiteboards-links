@@ -10,6 +10,9 @@ const markdown = `
 - [MyCompany](https://example.com/jobs) | San Francisco, CA; Tokyo, Japan | | |
 - [MyCompany](https://example.com/jobs) | Tokyo | My description
 - [MyCompany](https://example.com/jobs) | Melbourne, Victoria, Australia | My description
+- [MyCompany](https://example.com/jobs) | 100% remote | My description
+- [MyCompany](https://example.com/jobs) | distributed | My description
+- [MyCompany](https://example.com/jobs) | anywhere in the world | My description
 `;
 
 test('remark-lint-hiring-without-whiteboards-links', (t) => {
@@ -18,7 +21,13 @@ test('remark-lint-hiring-without-whiteboards-links', (t) => {
     [
       '3:1-3:80: Too many pipes, expected ` | location | description` after link',
       '4:1-4:65: Invalid location `Tokyo`, please include city and country name',
-      '5:1-5:90: Invalid location `Melbourne, Victoria, Australia`, please only include city and country name'
+      '5:1-5:90: Invalid location `Melbourne, Victoria, Australia`, please only include city and country name',
+      '6:1-6:71: Invalid remote value `100% remote`, please only use `Remote`',
+      '6:1-6:71: Invalid location `100% remote`, please include city and country name',
+      '7:1-7:71: Invalid remote value `distributed`, please only use `Remote`',
+      '7:1-7:71: Invalid location `distributed`, please include city and country name',
+      '8:1-8:81: Invalid remote value `anywhere in the world`, please only use `Remote`',
+      '8:1-8:81: Invalid location `anywhere in the world`, please include city and country name'
     ],
     'should validate'
   );
