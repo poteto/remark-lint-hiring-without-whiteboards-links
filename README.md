@@ -8,15 +8,18 @@ This rule only applies to list items starting with a link. It enforces the follo
 
 A single location must contain city name and country, separated by a `,`.
 Multiple locations should be separated by `;`, `&` or `/`.
+Remote should just contain `Remote`, and not `online`, `distributed`, `anywhere`, etc
 
 #### Good
 
     - [MyCompany](https://example.com/jobs) | San Francisco, CA; Tokyo, Japan | My description
+    - [MyCompany](https://example.com/jobs) | San Francisco, CA; Tokyo, Japan; Remote | My description
 
 #### Bad
 
     - [MyCompany](https://example.com/jobs) | Tokyo | My description
     - [MyCompany](https://example.com/jobs) | Melbourne, Victoria, Australia | My description
+    - [MyCompany](https://example.com/jobs) | Tokyo, Japan (HQ) & anywhere in the world | My description
 
 ### Format
 
