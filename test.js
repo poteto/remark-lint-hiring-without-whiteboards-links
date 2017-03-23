@@ -13,6 +13,7 @@ const markdown = `
 - [MyCompany](https://example.com/jobs) | 100% remote | My description
 - [MyCompany](https://example.com/jobs) | distributed | My description
 - [MyCompany](https://example.com/jobs) | anywhere in the world | My description
+- [MyCompany](https://example.com/jobs) | 100% online | My description
 `;
 
 test('remark-lint-hiring-without-whiteboards-links', (t) => {
@@ -27,7 +28,9 @@ test('remark-lint-hiring-without-whiteboards-links', (t) => {
       '7:1-7:71: Invalid remote value `distributed`, please only use `Remote`',
       '7:1-7:71: Invalid location `distributed`, please include city and country name',
       '8:1-8:81: Invalid remote value `anywhere in the world`, please only use `Remote`',
-      '8:1-8:81: Invalid location `anywhere in the world`, please include city and country name'
+      '8:1-8:81: Invalid location `anywhere in the world`, please include city and country name',
+      '9:1-9:71: Invalid remote value `100% online`, please only use `Remote`',
+      '9:1-9:71: Invalid location `100% online`, please include city and country name'
     ],
     'should validate'
   );
